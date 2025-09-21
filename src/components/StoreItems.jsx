@@ -1,16 +1,13 @@
-// StoreItems.jsx
 import React, { useEffect, useState } from "react";
-import { getProducts } from "./productsService";
+import { getProducts } from "../services/services";
 
 export default function StoreItems() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const data = getProducts();
-    setProducts(data);
+    getProducts().then((data) => {
+      setProducts(data);
+      console.log(data); 
+    });
   }, []);
-
-  console.log(products);
-
-  return null; 
 }
